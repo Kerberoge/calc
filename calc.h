@@ -41,13 +41,7 @@ void round ( int i )
     {
         // find out location of dot
         int dot_location;
-        for (dot_location = 0; dot_location < strlen(data[i]); dot_location++)
-        {
-            if (data[i][dot_location] == '.')
-            {
-                break;
-            }
-        }
+        for (dot_location = 0; data[i][dot_location] != '.'; dot_location++);
 
         // increase the last decimal digit if the digit after it is equal to or greater than 5
         char* zeros = "0.";
@@ -55,6 +49,7 @@ void round ( int i )
         {
             strncat(zeros, '0', 1);
         }
+        strncat(zeros, '1', 1);
     }
 }
 
