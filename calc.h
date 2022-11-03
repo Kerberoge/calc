@@ -50,9 +50,10 @@ void round ( int i )
         }
 
         // increase the last decimal digit if the digit after it is equal to or greater than 5
-        if (atoi(data[i][dot_location + decimals + 1]) >= 5)
+        char* zeros = "0.";
+        for (int j = 0; j < decimals - 1; j++)
         {
-            sprintf( data[i][dot_location + decimals], "%d", atoi( data[i][dot_location + decimals] ) + 1 );
+            strncat(zeros, '0', 1);
         }
     }
 }
