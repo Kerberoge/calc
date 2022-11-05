@@ -3,14 +3,6 @@
 #include <string.h>
 #include <ctype.h>
 
-/*TODO:
-    - support for more than one set of parentheses:
-        - enclosed parentheses ( ( ) )
-        - parallel parentheses ( ) ( )
-        - combination of the above ( ) ( ( ) )
-    - run in interactive mode when called without arguments
-*/
-
 /*PSEUDO-CODE FOR COMBINATION PARENTHESES PROBLEM:
 
 find_parentheses()
