@@ -63,7 +63,6 @@ void multiply ( int i )
     
     float temp_result = atof(data[prev]) * atof(data[next]);
     sprintf( data[prev], "%f", temp_result        ); // print temporary result to number before operator
-    round  ( prev );                                 // round result
     memset ( data[i],   0,     sizeof(data[i])    ); // clear entry of operator
     memset ( data[next], 0,    sizeof(data[next]) ); // clear entry of number after operator
 }
