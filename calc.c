@@ -163,8 +163,11 @@ int main ( int argc, char* argv[] )
         round_result += atof( zeros );
         sprintf( data[result_index], "%f", round_result );
     }
-    // truncate the resting decimals
-    
+    // truncate the resting decimals           14.675111
+    for (int i = 1; data[result_index][dot_location + decimals + i] != NULL; i++)
+    {
+        memset( data[result_index][dot_location + decimals + 1], 0, 1 );
+    }
 
     
 
