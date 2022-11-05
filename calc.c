@@ -134,15 +134,41 @@ int main ( int argc, char* argv[] )
 
     // verify contents of arrays after operations
     print_arr("Contents of array after operations: ");
-    
 
 
-    // the end result is the first non-empty entry of data[]
+
+    // find out the index number of the result
     int result_index = 0;
     while (data[result_index][0] == '\0')
     {
         result_index++;
     }
+
+
+
+    // round result
+    int dot_location;
+    for (dot_location = 0; data[result_index][dot_location] != '.'; dot_location++);
+    // increase the last decimal if the decimal after it is equal to or greater than 5
+    if ( atof( data[result_index][dot_location + decimals + 1] ) >= 5 )
+    {
+        char* zeros = "0.";
+        for (int j = 1; j < decimals; j++)
+        {
+            strncat(zeros, "0", 1);
+        }
+        strncat(zeros, "1", 1);
+
+        float round_result = atof( data[result_index] );
+        round_result += atof( zeros );
+        sprintf( data[result_index], "%f", round_result );
+    }
+    // truncate the resting decimals
+    
+
+    
+
+    // the end result is the first non-empty entry of data[]
     printf("%s\n", data[result_index]);
 
 
