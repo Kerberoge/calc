@@ -41,38 +41,8 @@ int main ( int argc, char* argv[] )
 
 
 
-    // find out the highest number of decimals
-    for (int i = 0; i < SIZE; i++)
-    {
-        if (strchr(data[i], '.') != NULL)
-        {
-            char* dec = strchr(data[i], '.');
-            int counter = 0;
-
-            for (int j = 0; j < strlen(dec); j++)
-            {
-                if (dec[j] != '.')
-                {
-                    counter++;
-                }
-            }
-
-            if (counter > decimals)
-            {
-                decimals = counter;
-            }
-        }
-    }
-
-
-
     // verify contents of arrays before operations
     print_arr("Contents of array before operations: ");
-
-
-
-    // print highest number of decimals
-    printf("Highest number of decimals: %d\n", decimals);
 
 
 
@@ -146,27 +116,14 @@ int main ( int argc, char* argv[] )
 
 
 
-    // round result
-    int dot_location;
-    for (dot_location = 0; data[result_index][dot_location] != '.'; dot_location++);
-    // increase the last decimal if the decimal after it is equal to or greater than 5
-    if ( atof( data[result_index][dot_location + decimals + 1] ) >= 5 )
+    // trim zeros from result
+    for ( int i = strlen( data[result_index] ) - 1; data[result_index][i] == '0'; i-- )
     {
-        char* zeros = "0.";
-        for (int j = 1; j < decimals; j++)
-        {
-            strncat(zeros, "0", 1);
-        }
-        strncat(zeros, "1", 1);
-
-        float round_result = atof( data[result_index] );
-        round_result += atof( zeros );
-        sprintf( data[result_index], "%f", round_result );
+        memset( &data[result_index][i], 0, 1 );
     }
-    // truncate the resting decimals           14.675111
-    for (int i = 1; data[result_index][dot_location + decimals + i] != NULL; i++)
+    if ( data[result_index][ strlen(data[result_index]) - 1 ] == '.' )
     {
-        memset( data[result_index][dot_location + decimals + 1], 0, 1 );
+        memset( &data[result_index][ strlen(data[result_index]) - 1 ], 0, 1 );
     }
 
     

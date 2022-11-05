@@ -4,7 +4,6 @@
 #include <ctype.h>
 
 /*TODO:
-    - floating point support
     - support for more than one set of parentheses:
         - enclosed parentheses ( ( ) )
         - parallel parentheses ( ) ( )
@@ -31,7 +30,6 @@ find_parentheses()
 #define LENGTH 16
 
 char data [SIZE][LENGTH] = {0};
-int decimals = 0;
 
 
 
