@@ -3,36 +3,47 @@
 int main ( int argc, char* argv[] )
 {
 
+    char exp[SIZE*LENGTH];
+    if ( argc == 2 )
+    {
+        strcpy(exp, argv[1]);
+    }
+    else if ( argc == 1 )
+    {
+        printf("Please enter your expression: ");
+        scanf("%s", exp);
+    }
 
 
-    // store the contents of argv[1] in a usable format
+
+    // store the contents of the expression in a usable format
     int n = 0;
-    for (int i = 0; i < strlen(argv[1]); i++)
+    for (int i = 0; i < strlen(exp); i++)
     {
 
-        if ( isdigit(argv[1][i]) || argv[1][i] == '.' ) // char is a number or floating point
+        if ( isdigit(exp[i]) || exp[i] == '.' ) // char is a number or floating point
         {
-            strncat(data[n], &argv[1][i], 1);
+            strncat(data[n], &exp[i], 1);
             
-            if ( i + 1 < strlen(argv[1]) && !isdigit(argv[1][i + 1]) && argv[1][i + 1] != '.' )
+            if ( i + 1 < strlen(exp) && !isdigit(exp[i + 1]) && exp[i + 1] != '.' )
             {
                 n++;
             }
         }
-        else if ( argv[1][i] == '*' || argv[1][i] == '/' || argv[1][i] == '+' || argv[1][i] == '(' || argv[1][i] == ')' ) // char is an operator (excluding minus)
+        else if ( exp[i] == '*' || exp[i] == '/' || exp[i] == '+' || exp[i] == '(' || exp[i] == ')' ) // char is an operator (excluding minus)
         {
-            strncat(data[n], &argv[1][i], 1);
+            strncat(data[n], &exp[i], 1);
             n++;
         }
-        else if ( argv[1][i] == '-' ) // char is minus
+        else if ( exp[i] == '-' ) // char is minus
         {
-            if (i == 0 || !isdigit(argv[1][i-1])) // minus sign is part of negative number
+            if (i == 0 || !isdigit(exp[i-1])) // minus sign is part of negative number
             {
-                strncat(data[n], &argv[1][i], 1);
+                strncat(data[n], &exp[i], 1);
             }
             else
             {
-                strncat(data[n], &argv[1][i], 1);
+                strncat(data[n], &exp[i], 1);
                 n++;
             }
         }

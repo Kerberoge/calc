@@ -2,4 +2,3 @@
         - enclosed parentheses ( ( ) )
         - parallel parentheses ( ) ( )
         - combination of the above ( ) ( ( ) )
-- run in interactive mode when called without arguments
