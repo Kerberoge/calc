@@ -13,6 +13,11 @@ int main ( int argc, char* argv[] )
         printf("Please enter your expression: ");
         scanf("%s", exp);
     }
+    else
+    {
+        printf("Warning: too many arguments provided!\n");
+        exit(1);
+    }
 
 
 
