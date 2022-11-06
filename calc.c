@@ -62,30 +62,37 @@ int main ( int argc, char* argv[] )
 
 
 
+    // find parentheses and organize their indexes by importance in an array
+    int pars_open_n = 0;
+    int pars_close_n = 1;
+    for ( int i = 0; i < SIZE; i++ )
+    {
+        if ( strchr(data[i], '(') != NULL )
+        {
+            pars_table[0][pars_open_n] = i;
+            pars_open_n += 2;
+        }
+        else if ( strchr(data[i], ')') != NULL )
+        {
+            pars_table[0][pars_close_n] = i;
+            pars_close_n += 2;
+        }
+    }
+
+    // print contents of pars_table
+    printf("Locations of parentheses: ");
+    for (int i = 0; i < PARS_TABLE_LENGTH; i++)
+    {
+        printf("%d ", pars_table[0][i]);
+    }
+    printf("\n");
+
+    
+
     // perform operations inside parentheses
-    int start, end;
-    int par_open_found, par_close_found = 0;
-
-    for (int i = 0; i < SIZE; i++)
+    for ( int i = 0; i < PARS_TABLE_LENGTH && pars_table[0][i+1] != 0; i += 2)
     {
-        if (strcmp(data[i], "(") == 0) {
-            par_open_found = 1;
-            start = i;
-        }
-    }
-
-    for (int i = SIZE - 1; i >= 0; i--)
-    {
-        if (strcmp(data[i], ")") == 0) {
-            par_close_found = 1;
-            end = i;
-        }
-    }
-
-    if (par_open_found == 1 && par_close_found == 1)
-    {
-        parentheses(start, end);
-        printf("'(' is at %d and ')' is at %d\n", start, end);
+        parentheses( pars_table[0][i], pars_table[0][i+1] );
     }
 
 

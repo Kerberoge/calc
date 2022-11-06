@@ -20,8 +20,11 @@ find_parentheses()
 
 #define SIZE 16
 #define LENGTH 16
+#define PARS_TABLE_SIZE 4
+#define PARS_TABLE_LENGTH 8
 
 char data [SIZE][LENGTH] = {0};
+int pars_table [PARS_TABLE_SIZE][PARS_TABLE_LENGTH] = {0};
 
 
 
