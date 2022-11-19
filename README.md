@@ -6,5 +6,5 @@ while also creating what I was missing in a tiling window manager setup: a light
 While working on this project, I have realised how valuable it is to have a clear image of what you want to create when coding a program, but I also
 discovered that programming in C makes you think in a very fundamental manner.
 <br /> <br />
-Warning: this program is in debug mode, meaning that there are several printf() statements scattered throughout the files.
-Please remove them if you dislike verbose mode.
+Notice: there's a commented function named print_arr at the end of calc.h. Use this function whenever you
+need the program to be verbose by calling it whenever you like in calc.c.

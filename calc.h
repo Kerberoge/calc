@@ -3,28 +3,10 @@
 #include <string.h>
 #include <ctype.h>
 
-/*PSEUDO-CODE FOR COMBINATION PARENTHESES PROBLEM:
-
-find_parentheses()
-{
-    search for '(' in array
-    if another '(' is encountered before ')' is encountered
-    {
-        find_parentheses()
-    }
-    search for ')' in array
-    when found, push index values back to an index array
-}
-
-*/
-
-#define SIZE 16
-#define LENGTH 16
-#define PARS_TABLE_SIZE 4
-#define PARS_TABLE_LENGTH 8
+#define SIZE 32
+#define LENGTH 8
 
 char data [SIZE][LENGTH] = {0};
-int pars_table [PARS_TABLE_SIZE][PARS_TABLE_LENGTH] = {0};
 
 
 
@@ -84,7 +66,7 @@ void subtract ( int i )
 
 
 
-void parentheses ( int start, int end )
+void calculate_parentheses ( int start, int end )
 {
     for (int i = start + 1; i < end; i++)
     {
@@ -111,6 +93,30 @@ void parentheses ( int start, int end )
 
 
 
+void process_parentheses ( int location )
+{
+    for ( int i = location; i < SIZE; i++ )
+    {
+        if ( strchr(data[i], '(') != NULL )
+        {
+            for (int j = i+1; j < SIZE; j++)
+            {
+                if ( strchr(data[j], '(') != NULL )
+                {
+                    process_parentheses(j);
+                }
+                else if ( strchr(data[j], ')') != NULL )
+                {
+                    calculate_parentheses(i,j);
+                    break;
+                }
+            }
+        }
+    }
+}
+
+
+/*
 void print_arr ( char* str )
 {
     printf("%s", str);
@@ -120,3 +126,4 @@ void print_arr ( char* str )
     }
     printf("\n");
 }
+*/

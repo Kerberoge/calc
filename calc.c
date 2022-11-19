@@ -57,43 +57,8 @@ int main ( int argc, char* argv[] )
 
 
 
-    // verify contents of arrays before operations
-    print_arr("Contents of array before operations: ");
-
-
-
-    // find parentheses and organize their indexes by importance in an array
-    int pars_open_n = 0;
-    int pars_close_n = 1;
-    for ( int i = 0; i < SIZE; i++ )
-    {
-        if ( strchr(data[i], '(') != NULL )
-        {
-            pars_table[0][pars_open_n] = i;
-            pars_open_n += 2;
-        }
-        else if ( strchr(data[i], ')') != NULL )
-        {
-            pars_table[0][pars_close_n] = i;
-            pars_close_n += 2;
-        }
-    }
-
-    // print contents of pars_table
-    printf("Locations of parentheses: ");
-    for (int i = 0; i < PARS_TABLE_LENGTH; i++)
-    {
-        printf("%d ", pars_table[0][i]);
-    }
-    printf("\n");
-
-    
-
-    // perform operations inside parentheses
-    for ( int i = 0; i < PARS_TABLE_LENGTH && pars_table[0][i+1] != 0; i += 2)
-    {
-        parentheses( pars_table[0][i], pars_table[0][i+1] );
-    }
+    // find parentheses and process them
+    process_parentheses(0);
 
 
 
@@ -122,11 +87,6 @@ int main ( int argc, char* argv[] )
             subtract(i);
         }
     }
-
-
-
-    // verify contents of arrays after operations
-    print_arr("Contents of array after operations: ");
 
 
 
